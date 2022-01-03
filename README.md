@@ -1,2 +1,16 @@
 # Voyager-Golden-Record
 Decoding the images on the Golden Record using Python
+
+This project was completed out of a childhood curiosity. I forget where I initially learned of the Golden Record project, but I remember I was left with a certain sense of awe, knowing that the Records' message will most likely survive well beyond my understanding of humanity. Additionally, I didn't quite understand how images could be encoded onto a record, and furthermore, I wanted to see if alien civilizations would have difficulty decoding the message. So I decided to try for myself. 
+
+First, as I do not have an original copy of the Golden Record (the nearest one I know of is about 11.6 billion miles from me), I opted for a version I found on SoundCloud. Later, I would find that this file was slightly corrupted which made my work much more tedious. Nonetheless, I was able to produce images out of it. 
+
+This project consisted of a lot of guesswork. The file was ever so slightly erratic, meaning that it would be faster to manually find individual values than to create an algorithm to find values automatically (I'll explain the significance of "values" soon). Therefore, after the intial framework and logic was created, most of the time was spent manually finding the values of each photo, all 115 of them.
+
+Two values are needed for each photo: the starting value and the adjustment value. An image width value and an image length value is also needed, but these can remain static for all images.
+
+The code functions as follows. A function is given a starting value, an image width value, and an adjustment value. This function begins with the starting value. If we represent the wave as a long string of numbers (peaks represented as positive integers and valleys represented as negative integers), we can see that the wave is nothing but an array 1 column wide and (in this case) 41794098 rows tall. Each of these rows contains an integer, representing the pixel's brightness within the image. 
+
+The starting value represents which row the image begins on. For example, the first calibration circle image (shown on the Golden Record cover) starts at the wave row 1,390,650 (this value had to be found manually). The image width value tells the function to start a new image row after a certain amount of values, in this case 734 values (this also had to be found manually, but remains the same for all images). The function then repeats this process 512 times; the image length value (this value is given in binary on the Golden Record cover, and also remains the same for all images). Finally, as the wavefile is slightly erratic, an adjustment value is needed. This adjustment value slightly shifts each row, so the image presents itself as vertical instead of slightly slanted (again, due to the nature of the audiofile). 
+
+To put the process simply, image a very long line of pixels. Then, chop these pixels every 734 pixels. Then, stack these sections of pixels (call them rows) 512 times. Then, adjust the rows so the image looks presentable. You end up with a 734 x 512 image repeat this process for all 115 images on the left and right channels, and you have decoded the entire Golden Record. 

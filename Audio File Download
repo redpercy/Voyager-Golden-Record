@@ -1,7 +1,9 @@
-The .wav file too large to put into Github, go to this link to download:
+The .wav file too large to put into Github, copy this link to download:
 
 https://soundcloud.com/user-482195982/voyager-golden-record-encoded-images
 
-I recommend this site to convert the soundcloud file to a .wav file
+I recommend this site to convert the soundcloud file to a .wav file. Paste the link above into the site below and download the file. 
 
 https://loader.to/en44/soundcloud-downloader.html
+
+Remember to place the file in the same location as the .ipynb file, and make sure the file name is "voyager_image_data.wav"
